@@ -1,0 +1,494 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top, #35152f 0%, #170d1b 45%, #08060c 100%);
+    color: #ffffff;
+    font-family: Georgia, "Times New Roman", serif;
+    overflow-x: hidden;
+}
+
+/* =========================
+   TELA INICIAL
+========================= */
+
+.inicio {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    position: relative;
+}
+
+/* brilho no fundo */
+
+.inicio::before {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: rgba(255, 70, 130, 0.12);
+    filter: blur(120px);
+    border-radius: 50%;
+    top: -180px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* conteúdo */
+
+.conteudo {
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    animation: aparecer 2s ease;
+}
+
+/* coração */
+
+.coracao {
+    font-size: 65px;
+    margin-bottom: 25px;
+    animation: pulsar 2s infinite ease-in-out;
+    filter: drop-shadow(0 0 20px rgba(255, 80, 140, 0.6));
+}
+
+/* texto pequeno */
+
+.pequeno {
+    color: #dcaabd;
+    font-size: 16px;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+/* título */
+
+h1 {
+    font-size: clamp(45px, 8vw, 78px);
+    line-height: 1.05;
+    font-weight: normal;
+    letter-spacing: -2px;
+    text-shadow: 0 0 30px rgba(255, 100, 160, 0.15);
+}
+
+/* frase */
+
+.frase {
+    max-width: 550px;
+    margin: 35px auto 0;
+    color: #d8c8d0;
+    font-size: 19px;
+    line-height: 1.8;
+}
+
+/* linha */
+
+.linha {
+    width: 70px;
+    height: 1px;
+    background: #b76a8c;
+    margin: 40px auto 25px;
+    opacity: 0.7;
+}
+
+/* assinatura */
+
+.assinatura {
+    color: #e7b4c9;
+    font-size: 17px;
+    font-style: italic;
+}
+
+/* =========================
+   ANIMAÇÕES
+========================= */
+
+@keyframes aparecer {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulsar {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
+    }
+}
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 600px) {
+
+    .inicio {
+        min-height: 100vh;
+        padding: 35px 20px;
+    }
+
+    .coracao {
+        font-size: 55px;
+        margin-bottom: 20px;
+    }
+
+    .pequeno {
+        font-size: 13px;
+        letter-spacing: 1.5px;
+    }
+
+    h1 {
+        font-size: 45px;
+        letter-spacing: -1px;
+    }
+
+    .frase {
+        font-size: 17px;
+        line-height: 1.7;
+        margin-top: 30px;
+    }
+
+    .linha {
+        margin-top: 35px;
+    }
+}
+/* =========================
+   CARTA
+========================= */
+
+.carta {
+    min-height: 100vh;
+    padding: 120px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background:
+        linear-gradient(
+            to bottom,
+            #08060c 0%,
+            #100912 50%,
+            #170b16 100%
+        );
+}
+
+.conteudo-carta {
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+}
+
+.conteudo-carta h2 {
+    font-size: clamp(35px, 6vw, 55px);
+    line-height: 1.2;
+    font-weight: normal;
+    color: #ffffff;
+    margin: 25px 0;
+}
+
+.texto-carta {
+    color: #d8c8d0;
+    font-size: 19px;
+    line-height: 2;
+    margin: 30px auto;
+    max-width: 620px;
+}
+
+.texto-carta.destaque {
+    color: #e7b4c9;
+    font-size: 21px;
+    font-style: italic;
+    margin-top: 45px;
+}
+
+/* =========================
+   CARTA NO CELULAR
+========================= */
+
+@media (max-width: 600px) {
+
+    .carta {
+        padding: 90px 20px;
+    }
+
+    .conteudo-carta h2 {
+        font-size: 38px;
+    }
+
+    .texto-carta {
+        font-size: 17px;
+        line-height: 1.9;
+    }
+
+    .texto-carta.destaque {
+        font-size: 18px;
+    }
+}
+/* =========================
+   ANIMAÇÃO DA CARTA
+========================= */
+
+.conteudo-carta,
+.texto-carta {
+    opacity: 0;
+    transform: translateY(35px);
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease;
+}
+
+.conteudo-carta.aparecer,
+.texto-carta.aparecer {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* =========================
+   CORAÇÕES FLUTUANTES
+========================= */
+
+.coracao-flutuante {
+    position: fixed;
+    bottom: -30px;
+    pointer-events: none;
+    z-index: 10;
+
+    animation:
+        subirCoracao linear forwards;
+
+    opacity: 0.7;
+}
+
+@keyframes subirCoracao {
+
+    from {
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.7;
+    }
+
+    to {
+        transform:
+            translateY(-110vh)
+            rotate(25deg);
+
+        opacity: 0;
+    }
+}
+/* =========================
+   LEMBRANÇAS
+========================= */
+
+.lembrancas {
+    padding: 70px 20px 100px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.titulo-lembrancas {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.titulo-lembrancas h2 {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: normal;
+    line-height: 1.2;
+    margin-top: 15px;
+}
+
+.foto-bloco {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 45px;
+    margin-bottom: 70px;
+}
+
+.foto-bloco.invertido {
+    flex-direction: row-reverse;
+}
+
+.foto-container {
+    width: 260px;
+    height: 320px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 18px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+.foto-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.foto-container:hover img {
+    transform: scale(1.05);
+}
+
+.foto-texto {
+    max-width: 300px;
+}
+
+.foto-texto span {
+    color: #b76a8c;
+    font-size: 14px;
+    letter-spacing: 3px;
+}
+
+.foto-texto h3 {
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: normal;
+    margin: 12px 0;
+}
+
+.foto-texto p {
+    color: #cdbec6;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+
+/* CELULAR */
+
+@media (max-width: 700px) {
+
+    .lembrancas {
+        padding: 50px 20px 80px;
+    }
+
+    .titulo-lembrancas {
+        margin-bottom: 40px;
+    }
+
+    .foto-bloco,
+    .foto-bloco.invertido {
+        flex-direction: column;
+        gap: 22px;
+        margin-bottom: 60px;
+    }
+
+    .foto-container {
+        width: 220px;
+        height: 270px;
+    }
+
+    .foto-texto {
+        text-align: center;
+        max-width: 330px;
+    }
+
+    .foto-texto h3 {
+        font-size: 22px;
+    }
+}
+/* =========================
+   DECLARAÇÃO
+========================= */
+
+.declaracao {
+    min-height: 100vh;
+    padding: 120px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(
+            circle at center,
+            #241020 0%,
+            #100912 45%,
+            #08060c 100%
+        );
+}
+
+.conteudo-declaracao {
+    width: 100%;
+    max-width: 720px;
+    text-align: center;
+}
+
+.conteudo-declaracao h2 {
+    font-size: clamp(35px, 6vw, 52px);
+    line-height: 1.2;
+    font-weight: normal;
+    margin: 20px 0;
+}
+
+.texto-declaracao {
+    margin-top: 45px;
+}
+
+.texto-declaracao p {
+    color: #d8c8d0;
+    font-size: 18px;
+    line-height: 2;
+    margin: 30px auto;
+    max-width: 650px;
+}
+
+.texto-declaracao .destaque-declaracao {
+    color: #e8b5ca;
+    font-size: 21px;
+    font-style: italic;
+    margin-top: 50px;
+}
+
+
+/* CELULAR */
+
+@media (max-width: 600px) {
+
+    .declaracao {
+        padding: 90px 20px;
+    }
+
+    .conteudo-declaracao h2 {
+        font-size: 37px;
+    }
+
+    .texto-declaracao p {
+        font-size: 17px;
+        line-height: 1.9;
+    }
+
+    .texto-declaracao .destaque-declaracao {
+        font-size: 18px;
+    }
+}
